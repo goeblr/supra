@@ -17,3 +17,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- script: mkdir build
+  displayName: Make Build Directory
+- task: CMake@1
+  inputs:
+    workingDirectory: 'build'
+    cmakeArgs: '.. -DCMAKE_CXX_COMPILER=g++ -DSUPRA_BEAMFORMER=OFF -DSUPRA_DEVICE_CEPHASONICS=OFF -DSUPRA_DEVICE_ULTRASONIX=OFF -DSUPRA_DOWNLOAD_SAMPLEDATA=OFF -DSUPRA_USE_CAMPVIS=OFF -DSUPRA_PROFILING=OFF -DSUPRA_INTERFACE_ROS=OFF -DSUPRA_DEVICE_TRACKING_ROS=OFF -DSUPRA_CUDA=OFF -DSUPRA_WARNINGS_AS_ERRORS=ON'
