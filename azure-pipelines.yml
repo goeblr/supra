@@ -10,15 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    apt-get install -y build-essential cmake qt5-default libtbb-dev curl wget git libopenigtlink-dev
+  displayName: 'Apt install dependencies'
 - script: mkdir build
-  displayName: Make Build Directory
+  displayName: 'Make Build Directory'
 - task: CMake@1
   inputs:
     workingDirectory: 'build'
